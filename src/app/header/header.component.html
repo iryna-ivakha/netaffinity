@@ -1,0 +1,94 @@
+<header class="header">
+    <div class="header-title">
+        <a routerLink="/dashboard" routerLinkActive="active">
+            <h2>Dashboard</h2>
+        </a>
+        <button class="button menu-toggle-button" (click)="showMenu()">
+            <i class="mdi mdi-menu"></i>
+        </button>
+    </div>  
+    
+    <div class="header-actions">
+        <button class="button submit-button" (click)="showRequestForm()">
+            Submit request
+        </button>
+        <a routerLink="/settings" class="notification-link">
+            <i class="mdi mdi-bell"></i>
+            <span class="notification-badge"></span>
+        </a>
+        <a routerLink="/" class="logout-link" aria-describedby="Logout">
+            
+            <i class="mdi mdi-logout"></i>
+        </a>
+    </div>  
+</header>
+
+<p-dialog 
+    [(visible)]="showRequestDialog" 
+    [modal]="true" 
+    [style]="{width: '50rem'}" 
+    header="Submit Request"
+    [draggable]="false"
+    [resizable]="false"
+    styleClass="request-dialog netaffinity-style-dialog">
+    <form [formGroup]="requestFormGroup" class="request-form">
+        <div class="form-field">
+            <span class="p-float-label">
+                <input 
+                    id="name" 
+                    type="text" 
+                    pInputText 
+                    formControlName="name"
+                    class="input-text"
+                    [ngClass]="{'ng-invalid ng-dirty': requestFormGroup.get('name')?.invalid && requestFormGroup.get('name')?.touched}" />
+                <label for="name">Name</label>
+            </span>
+            <small class="error-message" *ngIf="getErrorMessage('name')">
+                {{ getErrorMessage('name') }}
+            </small>
+        </div>
+        
+        <div class="form-field">
+            <!-- <span class="p-float-label"> -->
+                <p-dropdown 
+                    id="category"
+                    [options]="categories" 
+                    formControlName="category"
+                    optionLabel="name"
+                    class="input-text"
+                    [ngClass]="{'ng-invalid ng-dirty': requestFormGroup.get('category')?.invalid && requestFormGroup.get('category')?.touched}">
+                </p-dropdown>
+                <!-- <label for="category">Category</label> -->
+            <!-- </span> -->
+            <small class="error-message" *ngIf="getErrorMessage('category')">
+                {{ getErrorMessage('category') }}
+            </small>
+        </div>
+        
+        <div class="form-field">
+            <span class="p-float-label">
+                <textarea 
+                    id="request"
+                    pTextarea 
+                    formControlName="request"
+                    class="input-text input-textarea"
+                    [ngClass]="{'ng-invalid ng-dirty': requestFormGroup.get('request')?.invalid && requestFormGroup.get('request')?.touched}">
+                </textarea>
+                <label for="request">Request</label>
+            </span>
+            <small class="error-message" *ngIf="getErrorMessage('request')">
+                {{ getErrorMessage('request') }}
+            </small>
+        </div>
+    </form>
+    
+    <ng-template pTemplate="footer">
+        <button 
+            pButton 
+            label="Submit Request" 
+            (click)="onSubmitRequest()"
+            [disabled]="requestFormGroup.invalid"
+            class="p-button-info button submit-button">
+        </button>
+    </ng-template>
+</p-dialog>

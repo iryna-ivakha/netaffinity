@@ -1,0 +1,113 @@
+[
+  {
+    "datasets": {
+      "labels": [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July"
+      ],
+      "datasets": [
+        {
+          "label": "2021",
+          "data": [
+            0,
+            110,
+            20,
+            10,
+            180,
+            0,
+            130,
+            140
+          ],
+          "borderColor": "rgb(0, 227, 150)",
+          "fill": {
+            "target": "origin",
+            "above": "rgba(170, 246, 220, 0.5)"
+          },
+          "cubicInterpolationMode": "monotone",
+          "tension": 0.4
+        },
+        {
+          "label": "2020",
+          "data": [
+            0,
+            10,
+            40,
+            50,
+            80,
+            50,
+            0,
+            40
+          ],
+          "borderColor": "rgb(0, 143, 251)",
+          "fill": {
+            "target": "origin",
+            "above": "rgba(208, 234, 254, 0.5)"
+          },
+          "cubicInterpolationMode": "monotone",
+          "tension": 0.4
+        }
+      ]
+    },
+    "options": {
+      "responsive": true,
+      "plugins": {
+        "title": {
+          "display": false
+        }
+      },
+      "interaction": {
+        "intersect": false
+      },
+      "scales": {
+        "x": {
+          "display": true,
+          "title": {
+            "display": true
+          }
+        },
+        "y": {
+          "display": true,
+          "title": {
+            "display": true,
+            "text": "Value"
+          },
+          "suggestedMin": 0,
+          "suggestedMax": 180
+        }
+      }
+    },
+    "type": "line",
+    "title": "Categories"
+  },
+  {
+    "datasets": {
+      "labels": ["Category 1", "Category 2", "Category 3"],
+      "datasets":
+        [{
+          "label": "",
+          "data": [
+            300,
+            50,
+            100
+          ],
+          "backgroundColor": [
+            "rgb(255, 99, 132)",
+            "rgb(54, 162, 235)",
+            "rgb(255, 205, 86)"
+          ],
+          "hoverOffset": 4
+        }]
+      
+    },
+    "options": {
+
+    },
+    "type": "doughnut",
+    "title": "Bookings"
+  }
+]
