@@ -109,6 +109,9 @@
       "plugins": {
         "title": {
           "display": false
+        },
+        "legend": {
+          "position": "right"
         }
       },
       "maintainAspectRatio": true,
