@@ -1,7 +1,4 @@
 <div class="vidget white-bg" ngIf="type && data && options">
     <h3>{{title}}</h3>
-    <p-chart [type]="type"
-    [data]="data"
-    [options]="options"
-    class="h-[30rem]" />
+    <canvas  #VidgetChart >{{ chart }}</canvas>
 </div>

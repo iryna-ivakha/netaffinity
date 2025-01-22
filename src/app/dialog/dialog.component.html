@@ -1,0 +1,22 @@
+<dialog #dialog>
+    <h3>Submit Request</h3>
+    <form method="dialog">
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="form-field">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option *ngFor="let category of categories" [value]="category.code">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="request">Request</label>
+        <textarea id="request" name="request"></textarea>
+      </div>
+      <button (click)="onSubmitRequest()">Submit</button>
+    </form>
+  </dialog>
