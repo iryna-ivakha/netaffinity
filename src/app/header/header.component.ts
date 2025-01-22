@@ -4,9 +4,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import { Textarea } from 'primeng/inputtextarea';
+import { TextareaModule } from 'primeng/textarea';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabel } from 'primeng/floatlabel';
+import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 
 interface RequestForm {
   name: string;
@@ -24,11 +25,13 @@ interface RequestForm {
     DialogModule,
     InputTextModule,
     DropdownModule,
-    Textarea,
+    TextareaModule,
     ButtonModule,
-    FloatLabel
+    FloatLabel,
+    RouterLink,
+    RouterOutlet,
+    RouterLinkActive
   ],
-  standalone: true
 })
 export class HeaderComponent {
   items: Array<{label: string, icon: string, url: string}> = [];

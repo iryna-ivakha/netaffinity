@@ -82,7 +82,7 @@
       }
     },
     "type": "line",
-    "title": "Categories"
+    "title": "Bookings"
   },
   {
     "datasets": {
@@ -105,9 +105,16 @@
       
     },
     "options": {
-
+      "responsive": true,
+      "plugins": {
+        "title": {
+          "display": false
+        }
+      },
+      "maintainAspectRatio": true,
+      "aspectRatio": 2
     },
     "type": "doughnut",
-    "title": "Bookings"
+    "title": "Categories"
   }
 ]

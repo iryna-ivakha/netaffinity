@@ -10,9 +10,12 @@
 .header-actions {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    padding: 0.5rem 0;
     vertical-align: middle;
     align-items: center;
+    & > * {
+        margin: 0 0.5rem;
+    }
 }
 .button {
     display: flex;
@@ -48,6 +51,15 @@
     text-transform: uppercase; 
     transition: background-color 0.2s ease-in-out;
     box-shadow: 2px 2px 2px #aaa;
+    &:active {
+        box-shadow: none;
+        opacity: 0.8;
+    }
+}
+
+.link {
+    font-size: 1.5rem;
+    color: #666;
 }
 
 /*request dialog styles*/
