@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-design',
   imports: [],
   templateUrl: './design.component.html',
-  styleUrl: './design.component.scss'
+  styleUrl: './design.component.css'
 })
 export class DesignComponent {
 

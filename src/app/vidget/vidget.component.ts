@@ -1,12 +1,13 @@
-import { Component, Input, ViewChild, ElementRef, signal, Signal, effect } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, signal, effect, ChangeDetectorRef } from '@angular/core';
 import { ChartDatagroup } from '../models/data-models';
 import { ChartType, ChartData, ChartOptions } from 'chart.js';
 import Chart from 'chart.js/auto';
+import { setThrowInvalidWriteToSignalError } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-vidget',
   templateUrl: './vidget.component.html',
-  styleUrls: ['./vidget.component.scss']
+  styleUrls: ['./vidget.component.css']
 })
 
 export class VidgetComponent {  
@@ -19,7 +20,8 @@ export class VidgetComponent {
     labels: [],
     datasets: []
   };
-  chart: any;
+  chart: Chart | undefined;
+  chartCreated: boolean = false;
   @ViewChild('VidgetChart') vidgetChart!: ElementRef;
 
   @Input() set chartData(value: ChartDatagroup | undefined) {
@@ -32,24 +34,20 @@ export class VidgetComponent {
     }
   }
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
     effect(() => {
-      if (this.dataReady$() && this.canvasReady$()) {
+      if (this.dataReady$() && this.canvasReady$() && !this.chartCreated) {
         this.createChart();
+        this.chartCreated = true;
       }
     });
   }
-
-  ngAfterViewInit() {
-    this.canvasReady$.set('canvasReady');
-  }
   
-  ngAfterViewChecked() {
-    if (this.dataReady$() && this.canvasReady$()) {
-      this.createChart();
-    }
+  ngAfterViewInit() {
+      if (this.vidgetChart) {
+        this.canvasReady$.set('canvasReady');
+      }
   }
-
 
   createChart(){
     const chartCanvas = this.vidgetChart.nativeElement;
@@ -59,6 +57,7 @@ export class VidgetComponent {
         data: this.data,
         options: this.options
       });
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Error creating chart:', error);
     };

@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.header-title, 
+.header-actions {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 0;
+    vertical-align: middle;
+    align-items: center;
+    & > * {
+        margin: 0 0.5rem;
+    }
+}
+
+@media screen and (min-width: 801px) {
+    .header {
+        padding:0;
+    }
+    .menu-toggle-button {
+        display: none;
+    }
+}
