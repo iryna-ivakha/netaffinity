@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-billing',
   imports: [],
   templateUrl: './billing.component.html',
-  styleUrl: './billing.component.scss'
+  styleUrl: './billing.component.css'
 })
 export class BillingComponent {
 
