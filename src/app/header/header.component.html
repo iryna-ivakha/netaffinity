@@ -49,17 +49,14 @@
         </div>
         
         <div class="form-field">
-            <!-- <span class="p-float-label"> -->
-                <p-dropdown 
-                    id="category"
-                    [options]="categories" 
-                    formControlName="category"
-                    optionLabel="name"
-                    class="input-text"
-                    [ngClass]="{'ng-invalid ng-dirty': requestFormGroup.get('category')?.invalid && requestFormGroup.get('category')?.touched}">
-                </p-dropdown>
-                <!-- <label for="category">Category</label> -->
-            <!-- </span> -->
+            <p-dropdown 
+                id="category"
+                [options]="categories" 
+                formControlName="category"
+                optionLabel="name"
+                class="input-text"
+                [ngClass]="{'ng-invalid ng-dirty': requestFormGroup.get('category')?.invalid && requestFormGroup.get('category')?.touched}">
+            </p-dropdown>
             <small class="error-message" *ngIf="getErrorMessage('category')">
                 {{ getErrorMessage('category') }}
             </small>

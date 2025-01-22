@@ -94,7 +94,8 @@
         }
         
         .p-dialog-footer {
-            padding: 1rem 1.5rem;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            justify-content: flex-start;
         }
         
         .p-inputtext, 
