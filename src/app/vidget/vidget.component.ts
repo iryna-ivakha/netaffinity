@@ -1,11 +1,23 @@
-import { Component, Input, ViewChild, ElementRef, signal, effect, ChangeDetectorRef } from '@angular/core';
+import { 
+  Inject, 
+  PLATFORM_ID, 
+  Component, 
+  Input, 
+  ViewChild, 
+  ElementRef, 
+  signal, 
+  effect, 
+  ChangeDetectorRef
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ChartDatagroup } from '../models/data-models';
 import { ChartType, ChartData, ChartOptions } from 'chart.js';
 import Chart from 'chart.js/auto';
-import { setThrowInvalidWriteToSignalError } from '@angular/core/primitives/signals';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-vidget',
+  imports: [CommonModule],
   templateUrl: './vidget.component.html',
   styleUrls: ['./vidget.component.css']
 })
@@ -20,9 +32,10 @@ export class VidgetComponent {
     labels: [],
     datasets: []
   };
-  chart: Chart | undefined;
+  chart!: Chart;
   chartCreated: boolean = false;
   @ViewChild('VidgetChart') vidgetChart!: ElementRef;
+  isBrowser: boolean = true;
 
   @Input() set chartData(value: ChartDatagroup | undefined) {
     if (value && value.datasets && value.options && value.type && value.title) {
@@ -34,11 +47,15 @@ export class VidgetComponent {
     }
   }
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: unknown, 
+    private cdr: ChangeDetectorRef) {
     effect(() => {
       if (this.dataReady$() && this.canvasReady$() && !this.chartCreated) {
-        this.createChart();
-        this.chartCreated = true;
+        if (this.platformId && isPlatformBrowser(this.platformId)) {
+          this.createChart();
+          this.chartCreated = true;
+        }
       }
     });
   }
@@ -51,15 +68,25 @@ export class VidgetComponent {
 
   createChart(){
     const chartCanvas = this.vidgetChart.nativeElement;
-    try { 
-      this.chart = new Chart(chartCanvas, {
-        type: this.type,
-        data: this.data,
-        options: this.options
-      });
-      this.cdr.detectChanges();
-    } catch (error) {
-      console.error('Error creating chart:', error);
-    };
+    if (chartCanvas) {
+      
+      try { 
+        this.chart = new Chart(chartCanvas, {
+          type: this.type,
+          data: this.data,
+          options: this.options
+        });
+        chartCanvas.innerHTML = this.chart;
+        this.cdr.detectChanges();
+      } catch (error) {
+        console.error('Error creating chart:', error);
+      };
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
   }
 }  

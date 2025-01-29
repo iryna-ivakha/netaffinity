@@ -1,13 +1,16 @@
-<dialog #dialog>
-    <h3>Submit Request</h3>
-    <form method="dialog">
+<dialog #dialog class="dialog-wrapper">
+    <div class="dialog-header">
+        <h4>Submit Request</h4>
+    </div>
+    <form method="dialog" class="dialog-form">
       <div class="form-field">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" placeholder="Name" required [formControl]="name">
       </div>
       <div class="form-field">
         <label for="category">Category</label>
-        <select id="category" name="category">
+        <select id="category" name="category" aria-placeholder="Category" required [formControl]="category">
+          <option value="" selected disabled hidden></option>
           <option *ngFor="let category of categories" [value]="category.code">
             {{ category.name }}
           </option>
@@ -15,8 +18,8 @@
       </div>
       <div class="form-field">
         <label for="request">Request</label>
-        <textarea id="request" name="request"></textarea>
+        <textarea id="request" name="request" placeholder="Request" [formControl]="request"></textarea>
       </div>
-      <button (click)="onSubmitRequest()">Submit</button>
+      <button (click)="onSubmitRequest()" class="button submit-button">Submit</button>
     </form>
   </dialog>

@@ -10,7 +10,7 @@
 .header-actions {
     display: flex;
     flex-direction: row;
-    padding: 0.5rem 0;
+    padding: 2rem 0;
     vertical-align: middle;
     align-items: center;
     & > * {

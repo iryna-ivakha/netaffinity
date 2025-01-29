@@ -2,13 +2,13 @@
   {
     "datasets": {
       "labels": [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July"
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
       ],
       "datasets": [
         {
@@ -24,12 +24,15 @@
             140
           ],
           "borderColor": "rgb(0, 227, 150)",
+          "borderWidth": 2,
+          "backgroundColor": "rgb(0, 227, 150)",
           "fill": {
             "target": "origin",
             "above": "rgba(170, 246, 220, 0.5)"
           },
           "cubicInterpolationMode": "monotone",
-          "tension": 0.4
+          "tension": 0.4,
+          "pointRadius": 0
         },
         {
           "label": "2020",
@@ -44,12 +47,15 @@
             40
           ],
           "borderColor": "rgb(0, 143, 251)",
+          "borderWidth": 2,
+          "backgroundColor": "rgb(0, 143, 251)",
           "fill": {
             "target": "origin",
             "above": "rgba(208, 234, 254, 0.5)"
           },
           "cubicInterpolationMode": "monotone",
-          "tension": 0.4
+          "tension": 0.4,
+          "pointRadius": 0        
         }
       ]
     },
@@ -58,6 +64,15 @@
       "plugins": {
         "title": {
           "display": false
+        },
+        "legend": {
+          "display": true,
+          "position": "bottom",
+          "labels": {
+            "usePointStyle": true,
+            "pointStyle": "circle",
+            "font": {"size": 10}
+          }
         }
       },
       "interaction": {
@@ -109,6 +124,15 @@
       "plugins": {
         "title": {
           "display": false
+        },
+        "legend": {
+          "display": true,
+          "position": "right",
+          "labels": {
+            "usePointStyle": true,
+            "pointStyle": "circle",
+            "font": {"size": 10}
+          }
         }
       },
       "maintainAspectRatio": true,

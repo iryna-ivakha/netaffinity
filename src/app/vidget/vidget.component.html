@@ -1,4 +1,6 @@
-<div class="vidget white-bg" ngIf="type && data && options">
+<div class="vidget-content" *ngIf="type && data && options">
     <h3>{{title}}</h3>
-    <canvas #VidgetChart>{{ chart }}</canvas>
+    <div class="margin-top">
+        <canvas #VidgetChart></canvas>
+    </div>
 </div>

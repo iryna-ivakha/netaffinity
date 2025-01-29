@@ -22,4 +22,4 @@
         </a>
     </div>  
 </header>
-<app-dialog [visible]="showRequestDialog" (onClose)="showRequestDialog = false"></app-dialog>
+<app-dialog [visible]="showRequestDialog" (visibleChange)="showRequestDialog = $event"></app-dialog>

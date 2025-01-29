@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DialogComponent } from '../dialog/dialog.component';
 @Component({
   selector: 'app-header',
@@ -9,15 +9,12 @@ import { DialogComponent } from '../dialog/dialog.component';
   imports: [
     CommonModule,
     RouterLink,
-    RouterOutlet,
     RouterLinkActive,
     DialogComponent
   ],
 })
 export class HeaderComponent {
   showRequestDialog: boolean = false;
-  
-  
 
   constructor() {}
 
@@ -29,6 +26,7 @@ export class HeaderComponent {
   }
 
   showRequestForm() {
+    console.log(this.showRequestDialog);
     this.showRequestDialog = true;
   }
 
