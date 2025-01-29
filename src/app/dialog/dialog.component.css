@@ -1,0 +1,77 @@
+.dialog-wrapper {
+    width: 90vw;
+    max-width: 48rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px #aaa;
+    padding: 0;
+}
+
+dialog:-internal-dialog-in-top-layer::backdrop {
+    position: fixed;
+    inset: 0px;
+    background: rgba(204, 204, 204, 1);
+}
+
+.dialog-header {
+    border-bottom: 1px solid #ccc;
+}
+
+.dialog-header, 
+.dialog-form {
+    padding: 1.4rem;
+}
+
+.form-field {
+    padding: 0.5rem 0;
+    position: relative;
+    label {
+        position: absolute;
+        top: 1.5rem;
+        left: 0.4rem;
+        padding: 0 0.1rem;
+        font-size: 0.8rem;
+        color: #666;
+        background-color: #fff;
+        transition: top 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+    &:has( > input:focus),
+    &:has( > select:focus),
+    &:has( > textarea:focus){
+        label {
+            color: #4d90fe;
+            top: 0;
+        }
+    }
+    &:has( > .ng-dirty){
+        label {
+            top: 0;
+        }
+    }
+    *:focus {
+        outline: none;
+        border-color: #4d90fe;
+    }
+    input,
+    select,
+    textarea {
+        
+        box-sizing: border-box;
+        padding: 1rem 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        &::placeholder {
+            opacity: 0;
+        }
+    }
+    
+    textarea {
+        width: 100%;
+    }
+
+    input,
+    select {
+        width: 60%;
+    }
+
+}

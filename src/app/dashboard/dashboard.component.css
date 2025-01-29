@@ -9,17 +9,26 @@
     border: 1px solid #ccc;
     box-shadow: 2px 2px 2px #aaa;
     border-radius: 4px;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 @media screen and (min-width: 801px) {
     .dashboard-wrapper {
+        width: 100%;
         display: grid;
+        grid-template-areas: 
+        "vidget1 vidget2"
+        "booking-list booking-list";
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1fr auto;
-        gap: 2rem;
+    }
+    .vidget:nth-child(1) {
+        grid-area: vidget1;
+    }
+    .vidget:nth-child(2) {
+        grid-area: vidget2;
+    }
+    .booking-list { 
+        grid-area: booking-list;
+        /* grid-area: 2 / 1 / 3 / 3; */
     }
 
-    .booking-list { 
-        grid-area: 2 / 1 / 3 / 3;   
-    }
 }

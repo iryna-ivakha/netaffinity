@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-dashboard',
   imports: [VidgetComponent, BookingListComponent, CommonModule],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
   data: Array<ChartDatagroup> | undefined = [];
